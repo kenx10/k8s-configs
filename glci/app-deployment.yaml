@@ -38,3 +38,18 @@ spec:
             failureThreshold: 1
       imagePullSecrets:
         - name: dockerhub-cred
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: glci-app-entrypoint
+  namespace: default
+spec:
+  selector:
+    app: glci-app
+  ports:
+    - port: 1888
+      targetPort: 8080
