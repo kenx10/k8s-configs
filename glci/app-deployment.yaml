@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: glci-app-deployment
+  namespace: default
   labels:
     app: glci-app
 spec:
@@ -47,7 +48,10 @@ kind: Service
 metadata:
   name: glci-app-entrypoint
   namespace: default
+  labels:
+    app: glci-app
 spec:
+  type: LoadBalancer
   selector:
     app: glci-app
   ports:
